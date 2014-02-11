@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		60C91FBF18A9C712005769C8 /* UniversalLib */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 60C91FC018A9C712005769C8 /* Build configuration list for PBXAggregateTarget "UniversalLib" */;
+			buildPhases = (
+				60C91FC318A9C743005769C8 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = UniversalLib;
+			productName = UniversalLib;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		60C91F9A18A9C69C005769C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C91F9918A9C69C005769C8 /* Foundation.framework */; };
 		60C91F9F18A9C69C005769C8 /* DFID.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 60C91F9E18A9C69C005769C8 /* DFID.h */; };
@@ -204,6 +218,7 @@
 			targets = (
 				60C91F9518A9C69C005769C8 /* DFID */,
 				60C91FA518A9C69C005769C8 /* DFIDTests */,
+				60C91FBF18A9C712005769C8 /* UniversalLib */,
 			);
 		};
 /* End PBXProject section */
@@ -218,6 +233,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60C91FC318A9C743005769C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target DFID ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target DFID -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		60C91F9218A9C69C005769C8 /* Sources */ = {
@@ -390,6 +421,20 @@
 			};
 			name = Release;
 		};
+		60C91FC118A9C712005769C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		60C91FC218A9C712005769C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +460,14 @@
 			buildConfigurations = (
 				60C91FBD18A9C69C005769C8 /* Debug */,
 				60C91FBE18A9C69C005769C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		60C91FC018A9C712005769C8 /* Build configuration list for PBXAggregateTarget "UniversalLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60C91FC118A9C712005769C8 /* Debug */,
+				60C91FC218A9C712005769C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
