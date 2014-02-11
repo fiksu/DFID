@@ -38,7 +38,11 @@ NSString *const DFID_VERSION = @"dfid_v7_alpha";
 }
 
 +(NSString*) canOpenApps {
-    NSArray *apps = [NSArray arrayWithObjects:@"tel://", @"sms://",@"fb://",@"twitter://",nil];
+    NSArray *apps = [NSArray arrayWithObjects:
+                     @"tel://",@"sms://",@"fb://",@"twitter://",@"ibooks://",@"comgooglemaps://",
+                     @"pcast://",@"mgc://",@"youtube://",@"googlechrome://",@"googledrive://",
+                     @"googlevoice://",
+                     nil];
     NSString* a;
     NSMutableString* installed = [NSMutableString string];
     
