@@ -126,7 +126,6 @@ NSString *const DFID_VERSION = @"dfid_v7_alpha";
 
 + (NSString*) dfid {
     NSString* rawString = [self buildRawString];
-    NSLog(@"Raw aoi: %@", rawString);
     
     NSData *data = [rawString dataUsingEncoding: NSUTF8StringEncoding];
     
