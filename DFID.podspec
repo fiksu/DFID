@@ -13,10 +13,10 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/fiksu/DFID"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author             = { "Mark Corner" => "info@fiksu.com" }
+  s.author       = { "Fiksu, Inc." => "info@fiksu.com" }
   s.social_media_url = "https://twitter.com/Fiksu"
   s.platform     = :ios, '6.0'
   s.source       = { :git => "https://github.com/fiksu/DFID.git", :tag => "7.0.0-alpha" }
-  s.source_files  = 'DFID', 'DFID/**/*.{h,m}'
+  s.source_files = 'DFID/**/*.{h,m}'
   s.requires_arc = true
 end
