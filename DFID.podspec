@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.author       = { "Fiksu, Inc." => "info@fiksu.com" }
   s.social_media_url = "https://twitter.com/Fiksu"
   s.platform     = :ios, '6.0'
+  s.frameworks   = ["MessageUI", "CoreTelephony", "UIKit"]
   s.source       = { :git => "https://github.com/fiksu/DFID.git", :tag => "7.0.0-alpha" }
   s.source_files = 'DFID/**/*.{h,m}'
   s.requires_arc = true
