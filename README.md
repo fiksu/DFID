@@ -1,12 +1,12 @@
 # DFID for iOS
 # Copyright (c) 2014 Fiksu Inc., Released under the MIT License
 
-##Synopsis
+## Synopsis
 DFID is a Digital Fingerprinting library for iOS.  This is a native DF library and will only work for producing identifiers in iOS apps, not on the web.
 
-##FAQ
+## FAQ
 
-###What can I do with this?
+### What can I do with this?
 Digital Fingerprints can be used for many purposes in Digital Advertising.  The primary use of the DFID is to track conversions.  A typical process is to record a click on an ad for an app with a particular DFID.  Later when a user launches the app you can compute the same DFID, make the match, and presume that the click led to the installation of the app.
 
 ### How does a digital fingerprint work?
